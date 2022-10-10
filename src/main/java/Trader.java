@@ -63,7 +63,7 @@ public class Trader<T> {
 
     public int getSellingPrice(T t){
         if (t instanceof Tradable){
-            return 1;
+            return ((Tradable) t).getPrice();
         } else {
             return Tradable.MISSING_PRICE;
         }

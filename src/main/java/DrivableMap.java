@@ -7,7 +7,9 @@
  * created the constructor for you already.
  */
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 class DrivableMap {
     HashMap<String, Drivable> drivable_map;
@@ -40,26 +42,27 @@ class DrivableMap {
      * iterate through drivable_map.
      */
     public boolean hasFasterThan(int speed){
-        for (int i = 0; i < drivable_map.size(); i++) {
-            if (drivable_map. >= speed){
-
+        for (Drivable d : drivable_map.values()) {
+            if (d.getMaxSpeed() >= speed){
+                return true;
             }
         }
-        for (Drivable d :drivable_map.values()) {
-            
-        }
+        return false;
     }
-
-
-
-
 
     /* TODO: Write a method named getTradable that takes no arguments and
      *       returns a List containing all of the Tradable items in
      *       drivable_map.
      */
+    public List<Tradable> getTradable(){
+        List<Tradable> tl = new ArrayList<>();
+        for (Drivable d : drivable_map.values()){
+            if (d instanceof Tradable){
+                tl.add((Tradable) d);
+            }
+        }
+        return tl;
+    }
 
 
-
-    
 }

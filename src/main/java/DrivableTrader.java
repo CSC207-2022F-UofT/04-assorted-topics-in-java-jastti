@@ -18,13 +18,15 @@ public class DrivableTrader extends Trader<Drivable> {
         super(inventory, wishlist, money);
     }
 
+    public DrivableTrader(int money){
+        super(money);
+    }
+
     @Override
     public int getSellingPrice(Drivable d){
-        int sellingPrice = super.getSellingPrice(d);
-        if (sellingPrice == Tradable.MISSING_PRICE){
-
+        if (d instanceof Tradable){
+            return ((Tradable) d).getPrice() + d.getMaxSpeed();
         }
-        return sellingPrice;
-
+        return Tradable.MISSING_PRICE;
     }
 }
